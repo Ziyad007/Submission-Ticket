@@ -14,7 +14,7 @@ function SubjectPage(props) {
   useEffect(() => {
     // Fetch user info
     fetch(
-      `http://localhost:4000/subject/${props.subName}?teacherEmail=${props.teacherEmail}`
+      `https://submission-ticket-d9nh.onrender.com/subject/${props.subName}?teacherEmail=${props.teacherEmail}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -25,11 +25,14 @@ function SubjectPage(props) {
   }, [props.subName, props.teacherEmail]);
 
   function handleStudentStatusToggle(rollNo, currentStatus) {
-    fetch(`http://localhost:4000/subject/${props.subName}/status`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ rollNo, status: !currentStatus }), // Pass rollNo and new status
-    })
+    fetch(
+      `https://submission-ticket-d9nh.onrender.com/subject/${props.subName}/status`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rollNo, status: !currentStatus }), // Pass rollNo and new status
+      }
+    )
       .then((response) => {
         if (!response.ok) throw new Error("Failed to update student status");
         return response.json();
@@ -61,13 +64,18 @@ function SubjectPage(props) {
         <Link to={`/studentInfo/${params.value}`}>{params.value}</Link>
       ),
     },
-    { field: "student_name", headerName: "Name", width: 180, },
+    { field: "student_name", headerName: "Name", width: 180 },
     { field: "class", headerName: "Class", width: 120 },
     { field: "batch", headerName: "Batch", width: 120 },
     { field: "student_email", headerName: "Email", width: 200 },
-    { field: "student_ut1", headerName: "UT1", width: 100,editable:true},
-    { field: "student_ut2", headerName: "UT2", width: 100,editable:true },
-    { field: "subject_attendance", headerName: "Attendance", width: 150,editable:true },
+    { field: "student_ut1", headerName: "UT1", width: 100, editable: true },
+    { field: "student_ut2", headerName: "UT2", width: 100, editable: true },
+    {
+      field: "subject_attendance",
+      headerName: "Attendance",
+      width: 150,
+      editable: true,
+    },
     {
       field: "subject_status",
       headerName: "Status",
@@ -116,7 +124,7 @@ function SubjectPage(props) {
               rowsPerPageOptions={[5]}
               pagination
               sortingOrder={["asc", "desc"]}
-              style={{height:'370px'}}
+              style={{ height: "370px" }}
             />
           </div>
         </div>

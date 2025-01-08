@@ -80,19 +80,21 @@ function StudentPage(props) {
   }
   useEffect(() => {
     // Fetch user info
-    fetch(`http://localhost:4000/user/${props.rollNo}`)
+    fetch(`https://submission-ticket-d9nh.onrender.com/user/${props.rollNo}`)
       .then((response) => response.json())
       .then((data) => setUserInfo(data))
       .catch((error) => console.error("Error fetching user info:", error));
 
     // Fetch subjects
-    fetch(`http://localhost:4000/subjects/${props.rollNo}`)
+    fetch(
+      `https://submission-ticket-d9nh.onrender.com/subjects/${props.rollNo}`
+    )
       .then((response) => response.json())
       .then((data) => setSubjects(data))
       .catch((error) => console.error("Error fetching subjects:", error));
 
     // Fetch subjects
-    fetch(`http://localhost:4000/labs/${props.rollNo}`)
+    fetch(`https://submission-ticket-d9nh.onrender.com/labs/${props.rollNo}`)
       .then((response) => response.json())
       .then((data) => setLabsData(data))
       .catch((error) => console.error("Error fetching subjects:", error));

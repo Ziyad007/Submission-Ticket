@@ -31,7 +31,9 @@ function TeacherProfilePage(props) {
 
   useEffect(() => {
     // Fetch teacher info
-    fetch(`http://localhost:4000/teacher/${props.teacherId}`)
+    fetch(
+      `https://submission-ticket-d9nh.onrender.com/teacher/${props.teacherId}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -77,11 +79,12 @@ function TeacherProfilePage(props) {
                   <p>Email: {Info.email}</p>
                   <p>Phone Number: {Info.phone_number}</p>
                   <p>Class: {Info.assigned_classes}</p>
-                  <div style={{display:"flex" ,gap:"1rem",paddingTop:"1rem"}}>
+                  <div
+                    style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}
+                  >
                     <Button>Subject: {Info.assigned_subjects[0]}</Button>
                     <Button>Lab: {Info.assigned_labs[0]}</Button>
                     <Button>Batch: {Info.assigned_batch[0]}</Button>
-
                   </div>
                 </div>
               );

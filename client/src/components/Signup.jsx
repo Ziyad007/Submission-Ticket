@@ -34,21 +34,26 @@ function Signup({ setTeacherId }) {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          assigned_classes: assignedClasses.split(",").map((cls) => cls.trim()),
-          assigned_subjects: assignedSubjects
-            .split(",")
-            .map((sub) => sub.trim()),
-          assigned_labs: assignedLabs.split(",").map((lab) => lab.trim()),
-          phone_number: phoneNumber,
-        }),
-      });
+      const response = await fetch(
+        "https://submission-ticket-d9nh.onrender.com/signup",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            assigned_classes: assignedClasses
+              .split(",")
+              .map((cls) => cls.trim()),
+            assigned_subjects: assignedSubjects
+              .split(",")
+              .map((sub) => sub.trim()),
+            assigned_labs: assignedLabs.split(",").map((lab) => lab.trim()),
+            phone_number: phoneNumber,
+          }),
+        }
+      );
 
       if (response.ok) {
         const { teacherId } = await response.json();

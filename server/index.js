@@ -3,7 +3,9 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import cors from 'cors';
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
@@ -13,9 +15,7 @@ const db = new pg.Client({
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
   port: process.env.DBPORT,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  ssl: {rejectUnauthorized: false}
 });
 
 db.connect();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
@@ -10,7 +10,6 @@ import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 
 const darkBlueTheme = createTheme({
   typography: {
@@ -118,15 +117,18 @@ function Login({ setTeacherId, setStudentId }) {
     if (!validateInputs()) return;
 
     try {
-      const response = await fetch("http://localhost:4000/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://submission-ticket-d9nh.onrender.com/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
- 
+
         if (data.type === "teacher") {
           localStorage.setItem("teacherId", data.id);
           setTeacherId(data.id);
@@ -135,16 +137,14 @@ function Login({ setTeacherId, setStudentId }) {
           localStorage.setItem("StudentRollNo", data.rollNo);
           setStudentId(data.rollNo);
           navigate(`/student/${data.rollNo}`);
-        } else  { 
+        } else {
           alert("Invalid login credentials");
           setEmail("");
           setPassword("");
           console.error("Invalid Login credentials");
-          
         }
-      } else { 
+      } else {
         console.error("Invalid Login credentials");
-        
       }
     } catch (error) {
       console.error("Login error:", error);

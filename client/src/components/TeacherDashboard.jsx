@@ -12,7 +12,9 @@ function TeacherDashboard({ teacherId, setTeacherId }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/teacher/dashboard/${teacherId}`)
+    fetch(
+      `https://submission-ticket-d9nh.onrender.com/teacher/dashboard/${teacherId}`
+    )
       .then((response) => response.json())
       .then((data) => setTeacherData(data))
       .catch((error) => console.error("Error fetching teacher data:", error));
@@ -118,7 +120,7 @@ function TeacherDashboard({ teacherId, setTeacherId }) {
                 style={{
                   width: "2px",
                   height: "100%",
-                  backgroundColor:"gray",
+                  backgroundColor: "gray",
                 }}
               ></div>
             </div>
