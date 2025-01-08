@@ -5,14 +5,17 @@ import cors from 'cors';
 import bcrypt from "bcrypt";
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT;
 
 const db = new pg.Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Submission-Ticket',
-  password: 'ziyadzuha123',
-  port: 5432,
+  user:process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.DBPORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 db.connect();
