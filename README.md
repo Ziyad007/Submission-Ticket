@@ -1,7 +1,9 @@
 # PERN Student Submission Ticket Manager
 ## Student Submission Ticket Management Web App
 The PERN Student Submission Ticket Manager is a web application built using the PERN stack (PostgreSQL, Express.js, React, Node.js) for managing student submissions. It has two interfaces: one for teachers to manage student submissions and attendance, and one for students to view their submissions, marks, and status. The app includes functionalities for managing student data, including CRUD operations, sorting, and searching.
-
+## Sample Teacher Account Details
+Email : 1001@gmail.com
+Password: hashed_password
 ## Install Dependencies
 Before running the app, you need to install the required dependencies. Run the following command for both server and client folder:
 ```
